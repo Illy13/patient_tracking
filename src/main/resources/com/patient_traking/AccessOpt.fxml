@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patient_traking.HomeController">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane prefHeight="397.0" prefWidth="602.0" style="-fx-background-color: #acd8fc;">
+               <children>
+                  <ImageView blendMode="DARKEN" fitHeight="451.0" fitWidth="631.0" layoutY="-1.0" opacity="0.41" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@cardiologia.jpg" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="0.06" contrast="0.02" hue="0.02" />
+                     </effect>
+                  </ImageView>
+                  <AnchorPane layoutX="153.0" layoutY="28.0" prefHeight="322.0" prefWidth="294.0" style="-fx-background-color: #f7faf8; -fx-border-radius: 10 10 0 0; -fx-background-radius: 50 50 50 50;">
+                     <children>
+                        <Label layoutX="90.0" layoutY="79.0" prefHeight="30.0" prefWidth="113.0" text="Accedi come">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="b_medico" layoutX="45.0" layoutY="196.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #acd8fc; -fx-cursor: hand;" text="medico">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="b_paziente" layoutX="157.0" layoutY="196.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-color: #acd8fc; -fx-cursor: hand;" text="paziente">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="88.0" fitWidth="90.0" layoutX="46.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@iconamed.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView blendMode="MULTIPLY" fitHeight="60.0" fitWidth="54.0" layoutX="171.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@iconapers.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</HBox>

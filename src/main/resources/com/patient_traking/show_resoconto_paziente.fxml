@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="606.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patient_traking.show_resoconto_paziente_Controller">
+   <children>
+      <Button fx:id="b_logout" layoutX="505.0" layoutY="296.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="74.0" style="-fx-background-color: #d63d29;" text="Esci">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="label_paz" layoutX="14.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" text="Paziente">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="224.0" layoutY="182.0" prefHeight="114.0" prefWidth="142.0">
+         <children>
+            <Button fx:id="b_press_mensili" layoutX="28.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="85.0" style="-fx-background-color: #00000000;">
+               <graphic>
+                  <ImageView fitHeight="61.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@chart_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="19.0" layoutY="76.0" text="Pressione Mensile">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="213.0" layoutY="56.0" prefHeight="114.0" prefWidth="142.0" AnchorPane.leftAnchor="213.0" AnchorPane.rightAnchor="199.60000000000002" AnchorPane.topAnchor="56.0">
+         <children>
+            <Button fx:id="b_terapie" layoutX="18.0" layoutY="6.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="122.0" style="-fx-background-color: #00000000;">
+               <graphic>
+                  <ImageView fitHeight="92.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pngwing.com.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Label layoutX="59.0" layoutY="85.0" text="Terapia">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="42.0" layoutY="182.0" prefHeight="114.0" prefWidth="142.0">
+         <children>
+            <Button fx:id="b_pressione_set" layoutX="28.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="85.0" style="-fx-background-color: #00000000;">
+               <graphic>
+                  <ImageView fitHeight="61.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@chart_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="11.0" layoutY="76.0" text="Pressione Settimanale">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="380.0" layoutY="56.0" prefHeight="114.0" prefWidth="142.0">
+         <children>
+            <Button fx:id="b_patologie" layoutX="18.0" layoutY="6.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="122.0" style="-fx-background-color: #00000000;">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="62.0">
+                     <image>
+                        <Image url="@icona_patologia.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="46.0" layoutY="91.0" text="Patologie">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="45.0" layoutY="57.0" prefHeight="86.0" prefWidth="100.0">
+         <children>
+            <Button fx:id="b_info" layoutX="18.0" layoutY="6.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="122.0" style="-fx-background-color: #00000000;">
+               <graphic>
+                  <ImageView fitHeight="59.0" fitWidth="60.0" preserveRatio="true">
+                     <image>
+                        <Image url="@info.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="61.0" layoutY="91.0" text="Info">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="390.0" layoutY="182.0" prefHeight="111.0" prefWidth="135.0">
+         <children>
+            <Button fx:id="b_sintomi" layoutX="28.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="85.0" style="-fx-background-color: #00000000;">
+               <graphic>
+                  <ImageView fitHeight="72.0" fitWidth="73.0" preserveRatio="true">
+                     <image>
+                        <Image url="@sintomi.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="44.0" layoutY="76.0" text="Sintomi">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="b_messaggi" contentDisplay="TOP" graphicTextGap="0.0" layoutX="496.0" layoutY="14.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="86.0" style="-fx-background-color: #00000000;" text="Messaggi">
+         <graphic>
+            <ImageView fitHeight="43.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@notifica.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

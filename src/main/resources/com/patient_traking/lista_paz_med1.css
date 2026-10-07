@@ -1,0 +1,66 @@
+/* Stile della tabella */
+.table-view {
+  -fx-table-cell-border-color: transparent;
+  -fx-background-color: #FFFFFF;
+}
+
+/* Stile dell'intestazione della tabella */
+.table-view .column-header-background {
+  -fx-background-color: #f5f5f5;
+  -fx-border-color: #f5f5f5;
+  -fx-border-width: 0 0 2 0;
+}
+
+/* Stile delle righe pari della tabella */
+.table-row-cell:even {
+  -fx-background-color: #f5f5f5;
+}
+
+/* Stile delle righe dispari della tabella */
+.table-row-cell:odd {
+  -fx-background-color: #ffffff;
+}
+
+/* Stile delle celle della tabella */
+.table-cell {
+  -fx-padding: 10px;
+}
+
+/* Stile delle celle selezionate */
+.table-row-cell:selected .table-cell {
+  -fx-background-color: #cce4f7;
+}
+
+/* Stile dell'effetto hover sulle celle */
+.table-row-cell:hover .table-cell {
+  -fx-background-color: #eef7ff;
+}
+
+/* Stile del testo del nome del paziente */
+.patient-name {
+  -fx-font-weight: bold;
+}
+
+/* Stile del colore dello stato del paziente */
+.patient-status {
+  -fx-background-radius: 12px;
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-text-fill: white;
+  -fx-padding: 4px 8px;
+}
+
+/* Stile dello stato "Completed" */
+.patient-status.completed {
+  -fx-background-color: #43a047;
+}
+
+/* Stile dello stato "Pending" */
+.patient-status.pending {
+  -fx-background-color: #fbc02d;
+}
+
+/* Stile dello stato "Canceled" */
+.patient-status.canceled {
+  -fx-background-color: #f44336;
+}

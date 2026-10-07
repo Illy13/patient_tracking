@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patient_traking.fattori_controller">
+   <children>
+      <AnchorPane layoutY="6.0" prefHeight="543.0" prefWidth="228.0" style="-fx-background-color: #28252e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="24.0" layoutY="410.0" mnemonicParsing="false" onAction="#Add_users" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: green;" text="Add" />
+            <Button layoutX="24.0" layoutY="472.0" mnemonicParsing="false" onAction="#Delete" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: red;" text="Delete" />
+            <ComboBox fx:id="lista_fattori" layoutX="24.0" layoutY="329.0" prefHeight="30.0" prefWidth="180.0" promptText="Fattore di rischio" />
+         </children>
+      </AnchorPane>
+      <ImageView blendMode="MULTIPLY" fitHeight="146.0" fitWidth="154.0" layoutX="386.0" layoutY="14.0" preserveRatio="true">
+         <image>
+            <Image url="@paz.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="label_nome" alignment="CENTER" layoutX="324.0" layoutY="168.0" prefHeight="40.0" prefWidth="270.0" text="Nome">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_eta" alignment="CENTER" layoutX="415.0" layoutY="201.0" prefHeight="50.0" prefWidth="88.0" text="Età" />
+      <Label fx:id="label_class" alignment="CENTER" layoutX="276.0" layoutY="265.0" text="Classificazione">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Pane layoutX="229.0" layoutY="317.0" prefHeight="235.0" prefWidth="470.0" style="-fx-background-color: #e3ecfa;">
+         <children>
+            <Label layoutX="167.0" layoutY="14.0" text="FATTORI DI RISCHIO">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TableView fx:id="table_users" layoutX="100.0" layoutY="40.0" onMouseClicked="#getSelected" prefHeight="168.0" prefWidth="270.0">
+              <columns>
+                <TableColumn fx:id="col_fattori" prefWidth="269.5999816894531" text="Nome" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
