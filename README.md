@@ -1,194 +1,146 @@
 # Patient Tracking
 
-Applicazione desktop in **Java + JavaFX** per il monitoraggio dei pazienti da parte di un medico. Il paziente registra pressione, assunzione dei farmaci, sintomi, patologie e terapie concomitanti; il medico consulta lo stato di tutti i suoi pazienti, gestisce le terapie e comunica con loro tramite messaggi.
+A **Java + JavaFX** desktop application for monitoring patients. Patients record their blood pressure, medication intake, symptoms, conditions and concomitant therapies; doctors review the status of all their patients, manage therapies and communicate with them through messages.
 
-Il database è **H2 in memoria** (modalità compatibile PostgreSQL), creato e popolato con dati di prova a ogni avvio: **non serve installare né configurare nessun database**.
-
----
-
-## Funzionalità
-
-### Area paziente
-- Login con matricola e password
-- Registrazione della **pressione** (minima/massima) con controllo dei valori
-- Registrazione delle **assunzioni dei farmaci**
-- Registrazione di **sintomi**, **patologie** e **terapie concomitanti**
-- Tabella di controllo: per ogni farmaco, assunzioni prescritte e assunzioni effettuate oggi
-- **Chat** con il proprio medico
-
-### Area medico
-- Login con matricola e password
-- Elenco dei propri pazienti con **stato** (`Ok`, `Allerta` se non assume farmaci da più di 3 giorni, `unknown`) e data dell'ultima rilevazione
-- Resoconto di ogni paziente:
-  - grafici della **pressione settimanale e mensile**
-  - **terapie** (aggiunta, modifica, eliminazione)
-  - **patologie** in corso e pregresse
-  - **fattori di rischio**
-  - **sintomi** segnalati
-- **Chat** con il paziente selezionato
+The database is an **in-memory H2 database** (PostgreSQL compatibility mode), created and populated with sample data on every launch: **no database installation or configuration is required**.
 
 ---
 
-## Tecnologie
+## Features
+
+### Patient area
+- Login with ID number and password
+- **Blood pressure** logging (diastolic/systolic) with value validation
+- **Medication intake** logging
+- Logging of **symptoms**, **medical conditions** and **concomitant therapies**
+- Control table: for each drug, prescribed intakes vs. intakes taken today
+- **Chat** with their own doctor
+
+### Doctor area
+- Login with ID number and password
+- List of the doctor's patients with their **status** (`Ok`, `Allerta` if no medication has been taken for more than 3 days, `unknown`) and the date of the last record
+- Patient report:
+  - **weekly and monthly blood pressure** charts
+  - **therapies** (add, edit, delete)
+  - current and past **medical conditions**
+  - **risk factors**, age and blood pressure classification
+  - reported **symptoms**
+- **Chat** with the selected patient
+
+---
+
+## Tech stack
 
 | | |
 |---|---|
-| Linguaggio | Java 11 |
-| Interfaccia | JavaFX 17 (FXML) |
-| Database | H2 2.2 in-memory, modalità PostgreSQL |
+| Language | Java 11 |
+| UI | JavaFX 17 (FXML) |
+| Database | H2 2.2, in-memory, PostgreSQL mode |
+| Data access | JDBC (`PreparedStatement`) |
 | Build | Maven |
-| Accesso ai dati | JDBC (`PreparedStatement`) |
 
 ---
 
-## Requisiti
+## Requirements
 
-- **JDK 11 o superiore** (JavaFX viene scaricato automaticamente da Maven, non serve installarlo a parte)
-- **Maven** (oppure un IDE come IntelliJ IDEA / Eclipse / VS Code che lo includa)
+- **JDK 11 or later** (JavaFX is downloaded automatically by Maven, no separate installation needed)
+- **Maven** (or an IDE that bundles it, such as IntelliJ IDEA / Eclipse / VS Code)
 - Git
 
 ---
 
-## Scaricare ed eseguire il progetto
+## Download and run
 
 ```bash
-# 1. Clona il repository
-git clone https://github.com/<tuo-username>/<nome-repository>.git
-cd <nome-repository>
+# 1. Clone the repository
+git clone https://github.com/<your-username>/<repository-name>.git
+cd <repository-name>
 
-# 2. Avvia l'applicazione
+# 2. Run the application
 mvn clean javafx:run
 ```
 
-In alternativa, da IDE: apri la cartella come progetto Maven e avvia la classe principale `com.patient_traking.App`.
+Alternatively, from an IDE: open the folder as a Maven project and run the main class `com.patient_traking.App`.
 
-All'avvio nel terminale compaiono i messaggi:
+On startup the terminal prints:
 
 ```
 DataBase H2 connesso con successo (In-Memory)!
 Tabelle H2 create e inizializzate con successo!
 ```
 
-> **Nota:** il database è in memoria. A ogni avvio i dati ripartono da quelli di prova, e le modifiche fatte durante l'uso non vengono salvate.
+> **Note:** the database is in memory. Data is reset to the sample data on every launch, and changes made while using the app are not saved.
 
 ---
 
-## Credenziali di prova
+## Test credentials
 
-| Ruolo | Nome | Matricola | Password |
+| Role | Name | ID number | Password |
 |---|---|---|---|
-| Paziente | Giuseppe Verdi | `1001` | `pass123` |
-| Medico | Mario Rossi | `1` | `doc123` |
+| Patient | Giuseppe Verdi | `1001` | `pass123` |
+| Doctor | Mario Rossi | `1` | `doc123` |
 
-Nella schermata iniziale scegli **Paziente** o **Medico** e inserisci le credenziali della tabella.
+On the start screen choose **Paziente** (patient) or **Medico** (doctor) and enter the credentials above.
 
-### Dati di prova presenti
+### Sample data
 
-- **Pazienti** del medico 1: Giuseppe Verdi (`1001`), Maria Bianchi (`1002`), Luca Ferrari (`1003`)
-- **Farmaci**: Tachipirina 1000, Aspirina 500, Omez 20mg
-- **Terapie**: Giuseppe ha Tachipirina (3 assunzioni/giorno) e Omez (1/giorno); Maria ha Aspirina
-- **Patologie** di Giuseppe: ipertensione e gastrite (in corso), influenza (pregressa)
-- **Pressione** di Giuseppe: rilevazioni negli ultimi 25 giorni
-- **Messaggi**: una conversazione tra Giuseppe e il medico
-
----
-
-## Percorso di test consigliato
-
-**Come paziente (`1001` / `pass123`)**
-1. Premi **Aggiorna** (freccia circolare): vedi farmaci prescritti e assunti oggi.
-2. **Registra pressione**: inserisci valori come 80/120.
-3. **Registra assunzione**: registra una dose di Tachipirina e premi di nuovo Aggiorna.
-4. **Contatta medico**: scrivi un messaggio.
-
-**Come medico (`1` / `doc123`)**
-1. Nella lista pazienti trovi lo stato di ciascuno.
-2. Clicca l'icona del grafico accanto a Giuseppe Verdi per aprire il resoconto.
-3. Prova **Pressione settimanale / mensile**, **Terapie** (aggiungi, modifica, elimina), **Patologie**, **Info** (fattori di rischio), **Sintomi** e **Messaggi**.
+- **Patients** of doctor 1: Giuseppe Verdi (`1001`), Maria Bianchi (`1002`), Luca Ferrari (`1003`)
+- **Drugs**: Tachipirina 1000, Aspirina 500, Omez 20mg
+- **Therapies**: Giuseppe takes Tachipirina (3 intakes/day) and Omez (1/day); Maria takes Aspirina
+- **Conditions** of Giuseppe: hypertension and gastritis (ongoing), flu (past)
+- **Blood pressure** of Giuseppe: readings over the last 25 days
+- **Messages**: one conversation between Giuseppe and the doctor
 
 ---
 
-## Struttura del progetto
+## Suggested test walkthrough
 
-Package `com.patient_traking`.
+**As a patient (`1001` / `pass123`)**
+1. Press the **refresh** button (circular arrow): you see prescribed drugs and intakes taken today.
+2. **Registra pressione**: enter values such as 80/120.
+3. **Registra assunzione**: log a dose of Tachipirina, then press refresh again.
+4. **Contatta medico**: send a message.
 
-### Accesso al database
+**As a doctor (`1` / `doc123`)**
+1. The patient list shows each patient's status.
+2. Click the chart icon next to Giuseppe Verdi to open his report.
+3. Try the weekly/monthly **blood pressure** charts, **Terapie** (add, edit, delete), **Patologie**, **Info** (risk factors), **Sintomi** and **Messaggi**.
 
-| Classe | Ruolo |
+---
+
+## Architecture
+
+The code is organized in the package `com.patient_traking` following a simple layered structure:
+
+- **Connection and data access**: `DBConnection` opens the in-memory H2 connection and creates and populates the tables at startup; `DBUtils` contains all the SQL queries used by the application.
+- **View**: `View` handles scene changes and the opening of windows.
+- **Controllers**: one JavaFX controller per screen (login, patient home, doctor home, patient report, therapies, conditions, risk factors, symptoms, charts, messages).
+- **Model classes**: small classes representing the rows shown in the tables (users, therapies, conditions, symptoms, risk factors, messages).
+
+---
+
+## Database schema
+
+| Table | Content |
 |---|---|
-| `DBConnection` | Apre la connessione H2 in memoria, crea le tabelle e inserisce i dati di prova all'avvio. Espone `getConn()`. |
-| `DBUtils` | Classe "model": contiene tutte le query SQL dell'applicazione (vedi sotto). |
-
-### Metodi di `DBUtils`
-
-| Metodo | Cosa fa |
-|---|---|
-| `logInPaziente(event, matricola, password)` | Verifica le credenziali del paziente e apre la sua schermata. |
-| `logInMedico(event, matricola, password)` | Verifica le credenziali del medico e apre la lista dei suoi pazienti. |
-| `getMidMed(pid)` | Restituisce la matricola del medico di un paziente. |
-| `getDatausers(med_ref)` | Elenco pazienti di un medico, con stato (`Ok`/`Allerta`/`unknown`) e data dell'ultima assunzione. |
-| `getTerapie(pid)` | Terapie prescritte a un paziente (farmaco, quantità, assunzioni giornaliere, indicazioni). |
-| `addTerapia(mid, pid, fid, indicazioni, quantita, assunzioni)` | Inserisce una nuova terapia. |
-| `getPatologie(pid, isPregressa)` | Patologie in corso o pregresse di un paziente. |
-| `getFattori(pid)` | Fattori di rischio di un paziente. |
-| `getSintomi(pid)` | Sintomi registrati da un paziente. |
-| `RegistraPressioni(pid, SIS, DIA, dataOra)` | Salva una misurazione della pressione, rifiutando valori non plausibili. |
-| `RegistraFarmaco(event, pid, nomeF, quantita, dataOra)` | Registra l'assunzione di un farmaco e controlla il rispetto della terapia. |
-| `RegistraSintomi(pid, nomeS, info, data)` | Registra un sintomo. |
-| `RegistraPatologia(pid, nomeP, dataI, dataF)` | Registra una patologia con data di inizio ed eventuale fine. |
-| `RegistraTerapiaConc(quantita, pid, nomeF, dataI, dataF)` | Registra una terapia concomitante (aggiunge il farmaco se non esiste). |
-| `getAssunzioniGiornalierePerFarmaco(pid, fid)` | Assunzioni effettuate oggi per un farmaco. |
-| `getAssunzioniPrescrittePerFarmaco(pid, fid)` | Assunzioni giornaliere prescritte per un farmaco. |
-| `visualizzaMessaggi(midMed, pidPaz, tabella, chat)` | Carica la conversazione medico-paziente. |
-| `insertMessage(mittente, mid, pid, testo)` | Salva un messaggio (`m` = medico, `p` = paziente). |
-
-### Interfaccia (controller e scene)
-
-| Classe | Ruolo |
-|---|---|
-| `View` | Gestisce il cambio di scena e l'apertura delle finestre (resoconto, grafici, popup, chat). |
-| `PazienteController` / `MedicoController` | Schermate di login. |
-| `LoggedInPazController` | Schermata principale del paziente e tabella di controllo delle assunzioni. |
-| `LoggedInMed` | Schermata principale del medico: tabella dei pazienti con pulsante di accesso al resoconto. |
-| `show_resoconto_paziente_Controller` | Resoconto di un paziente visto dal medico; apre grafici, terapie, patologie, info, sintomi e chat. |
-| `terapie_controller` | Aggiunta, modifica ed eliminazione delle terapie. |
-| `PatologiaController` | Popup del paziente per registrare una patologia (date di inizio/fine con controllo delle date). |
-| `fattori_controller` | Scheda "Info" del paziente: età, classificazione della pressione (media degli ultimi 30 giorni) e gestione dei fattori di rischio. |
-| `sintomi_controller` | Tabella dei sintomi registrati dal paziente. |
-| `Press_sett_controller`, `Press_mens_controller` | Grafici della pressione degli ultimi 6 e 30 giorni (valori massimi giornalieri). |
-
-### Classi del modello
-
-`Users`, `terapie`, `patologie`, `fattori`, `sintomi`, `Messaggio`, `CheckAssunzione` rappresentano le righe mostrate nelle tabelle. `GetPid` conserva il pid del paziente loggato.
+| `matpaz`, `matmed` | Login credentials of patients and doctors |
+| `pazienti` | Patient data: name, age and reference doctor (`med_ref`) |
+| `farmaco` | List of drugs |
+| `terapia` | Therapies prescribed by the doctor |
+| `terapia_concom` | Concomitant therapies declared by the patient |
+| `assunzione` | History of medication intakes |
+| `pressione` | Blood pressure readings |
+| `patologia`, `patologie_paziente` | Catalogue of conditions and conditions of each patient |
+| `fattore_rischio`, `fattori_rischio_paz` | Risk factors and their association with patients |
+| `sintomi`, `registra_sintomi` | Catalogue of symptoms and symptoms logged by patients |
+| `messaggi` | Doctor-patient chat |
 
 ---
 
-## Schema del database
+## Known limitations
 
-| Tabella | Contenuto |
-|---|---|
-| `matpaz`, `matmed` | Credenziali di accesso di pazienti e medici |
-| `pazienti` | Anagrafica, età e medico di riferimento (`med_ref`) |
-| `farmaco` | Elenco dei farmaci |
-| `terapia` | Terapie prescritte dal medico |
-| `terapia_concom` | Terapie concomitanti dichiarate dal paziente |
-| `assunzione` | Storico delle assunzioni di farmaci |
-| `pressione` | Misurazioni della pressione |
-| `patologia`, `patologie_paziente` | Catalogo delle patologie e patologie di ogni paziente |
-| `fattore_rischio`, `fattori_rischio_paz` | Fattori di rischio e loro associazione ai pazienti |
-| `sintomi`, `registra_sintomi` | Catalogo dei sintomi e sintomi registrati |
-| `messaggi` | Chat medico-paziente |
+- Passwords in the sample database are stored in plain text. This is acceptable for a demo, but a real system should store salted hashes (e.g. BCrypt).
+- The database is in memory and does not persist between launches.
+- The chat does not refresh automatically: reopen the window to see new messages.
 
 ---
-
-## Limiti noti
-
-- Le password nel database di prova sono in chiaro: va bene per una demo, ma in un sistema reale vanno salvate con hash e salt (per esempio BCrypt).
-- Il database è in memoria e non persiste tra un avvio e l'altro.
-- La chat non si aggiorna automaticamente: la finestra va riaperta per vedere i nuovi messaggi.
-
----
-
-## Autore
-
-<Nome Cognome> · [LinkedIn](https://www.linkedin.com/in/<tuo-profilo>) · <email>
